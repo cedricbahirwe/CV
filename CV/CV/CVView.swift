@@ -78,17 +78,17 @@ struct CVView: View {
                         VStack(alignment: .leading, spacing: 40) {
                             WorkExperienceView()
                                 .id(1)
+                                .id(3)
                             SkillsView()
                                 .id(2)
+                                .id(4)
                         }
                         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
 //                        .frame(maxHeight: .infinity, alignment: .topLeading)
                         
                         VStack(alignment: .leading, spacing: 20) {
                             HobbiesView(isIphone)
-                                .id(3)
                             AttitudesView(isIphone)
-                                .id(4)
                         }
                         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
                         
