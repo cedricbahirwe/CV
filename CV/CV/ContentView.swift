@@ -13,6 +13,7 @@ struct ContentView: View {
     
     @State private var id = 1
     @State private var showButton = true
+    @State private var offset = CGSize.zero
     
     var body: some View {
         ZStack(alignment: .bottomTrailing) {
@@ -34,22 +35,16 @@ struct ContentView: View {
                 mainBgColor.ignoresSafeArea(.all, edges: .all)
             })
             
-            Button(action: {
-                if id < 4 {
-                    id += 1
-                } else {
-                    id  = 1
-                }
-            }, label: {
-                Image(systemName: id < 4 ? "arrow.down" : "arrow.up")
-                    .foregroundColor(.black)
-                    .frame(width: 60, height: 60)
-                    .background(Color.white.opacity(0.9))
-                    .cornerRadius(30)
-            })
+            Image(systemName: id < 4 ? "arrow.down" : "arrow.up")
+                .foregroundColor(.black)
+                .frame(width: 60, height: 60)
+                .background(Color.white.opacity(0.9))
+                .cornerRadius(30)
+                .shadow(radius: 3 )
+                
             .disabled(!showButton)
             .opacity(showButton ? 1 : 0)
-//            .onDrag({ /*@START_MENU_TOKEN@*//*@PLACEHOLDER=Item Provider@*/NSItemProvider()/*@END_MENU_TOKEN@*/ })
+            .offset(offset)
         }
         .onReceive(Timer.publish(every: 5.0, on: .main, in: .common).autoconnect(), perform: { _ in
             withAnimation {
