@@ -29,6 +29,9 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
-//            .previewLayout(.fixed(width: 1200, height: 1000))
+            .environment(\.horizontalSizeClass, .regular)
+            .environment(\.verticalSizeClass, .regular)
+
+//            .previewLayout(.fixed(width: 1366, height: 1024))
     }
 }

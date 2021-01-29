@@ -38,6 +38,7 @@ struct CVView: View {
             || (horizontalSizeClass == .regular && verticalSizeClass == .compact)
     }
     
+    let size = UIScreen.main.bounds.size
     var body: some View {
         VStack(spacing: 0) {
             
@@ -63,7 +64,7 @@ struct CVView: View {
                         }
                         .padding()
                         VStack(alignment: .leading, spacing: 20) {
-                            HobbiesView()
+                            HobbiesView(isIphone)
                                 .id(3)
                             AttitudesView(isIphone)
                                 .id(4)
@@ -73,19 +74,20 @@ struct CVView: View {
                     .padding()
                 }
                 else {
-                    HStack(spacing: 150) {
+                    HStack(spacing: 80) {
                         VStack(alignment: .leading, spacing: 40) {
                             WorkExperienceView()
                                 .id(1)
                             SkillsView()
                                 .id(2)
                         }
-                        .frame(maxHeight: .infinity, alignment: .topLeading)
+                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
+//                        .frame(maxHeight: .infinity, alignment: .topLeading)
                         
                         VStack(alignment: .leading, spacing: 20) {
-                            HobbiesView()
+                            HobbiesView(isIphone)
                                 .id(3)
-                            AttitudesView()
+                            AttitudesView(isIphone)
                                 .id(4)
                         }
                         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
@@ -94,7 +96,6 @@ struct CVView: View {
                     .padding(50)
                 }
             }
-            
             .foregroundColor(.white)
         }
         .colorScheme(.light)

@@ -72,7 +72,7 @@ struct AttitudeView: View {
         VStack {
             Circle()
                 .strokeBorder(Color.white,lineWidth: 6)
-                .frame(width: 130, height: 130)
+                .frame(width: 120, height: 120)
                 
                 .overlay(
                     
@@ -163,6 +163,12 @@ struct HobbiesView: View {
         "Coding", "Movies", "Experimenting"
     ]
     
+    
+    let isIphone: Bool
+    init(_  isIphone: Bool) {
+        self.isIphone =  isIphone
+    }
+    
     var body: some View {
         Group {
             Text("Hobbies")
@@ -178,7 +184,7 @@ struct HobbiesView: View {
                     Text(hobbies[self.indexFor(row, column)])
                         .font(.system(size: 16, weight: .regular, design: .serif))
                 }
-                .frame(width: 120, height: 80)
+                .frame(width: isIphone ? 120 : 160, height: isIphone ? 80 : 100)
                 .padding(.bottom)
                 
             }
@@ -194,7 +200,7 @@ struct HobbiesView: View {
 struct AttitudesView: View {
     
     let isIphone: Bool
-    init(_  isIphone: Bool = true) {
+    init(_  isIphone: Bool) {
         self.isIphone =  isIphone
     }
     var body: some View {
@@ -204,16 +210,14 @@ struct AttitudesView: View {
             
             HStack(alignment: .top) {
                 AttitudeView(title: "Motivated")
-                    .scaleEffect(isIphone ? 0.7: 1.0)
+                    .scaleEffect(isIphone ? 0.75: 1.0)
                 Spacer()
                 AttitudeView(title: "Detail oriented")
                     .scaleEffect(isIphone ? 0.9: 1.0)
                 Spacer()
                 AttitudeView(title: "Loyal")
-                    .scaleEffect(isIphone ? 0.7: 1.0)
+                    .scaleEffect(isIphone ? 0.75: 1.0)
             }
-            
-            .frame(maxWidth: .infinity)
         }
     }
 }
@@ -232,7 +236,7 @@ struct ProfileHeaderView: View {
                 
                 
                 if isIphone {
-                    VStack(spacing: 5) {
+                    VStack(alignment: .leading, spacing: 5) {
                         HStack {
                             Image(systemName: "phone")
                             Text("+250782628511")
@@ -240,7 +244,7 @@ struct ProfileHeaderView: View {
                         
                         HStack {
                             Image(systemName: "envelope")
-                            Text("+250782628511")
+                            Text("cedbahirwe@gmail.com")
                         }
                     }
                 } else {
@@ -303,7 +307,7 @@ struct SkillView: View {
             }
             .frame(width: 250, alignment: .leading)
         }
-        .padding(.horizontal, 3)
+//        .padding(.horizontal, 3)
     }
 }
 
