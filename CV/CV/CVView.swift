@@ -12,7 +12,8 @@ class MainViewModel: ObservableObject {
     @Environment(\.horizontalSizeClass) var horizontalSizeClass: UserInterfaceSizeClass?
     
     var isIphone: Bool {
-        return (horizontalSizeClass == .compact && verticalSizeClass == .regular) || (horizontalSizeClass == .regular && verticalSizeClass == .compact)
+        return (horizontalSizeClass == .compact && verticalSizeClass == .regular)
+        || (horizontalSizeClass == .regular && verticalSizeClass == .compact)
         
     }
     
@@ -31,40 +32,28 @@ struct CVView: View {
     @Environment(\.verticalSizeClass) var verticalSizeClass: UserInterfaceSizeClass?
     @Environment(\.horizontalSizeClass) var horizontalSizeClass: UserInterfaceSizeClass?
     
+    
+    var isIphone: Bool {
+        return (horizontalSizeClass == .compact && verticalSizeClass == .regular)
+            || (horizontalSizeClass == .regular && verticalSizeClass == .compact)
+    }
+    
     var body: some View {
         VStack(spacing: 0) {
             
-            ProfileHeaderView()
-            
-            if horizontalSizeClass == .compact && verticalSizeClass == .regular {
-                
-                Text("iPhone Portrait")
-            }
-            else if horizontalSizeClass == .regular && verticalSizeClass == .compact {
-                
-                Text("iPhone Landscape")
-            }
-            else if horizontalSizeClass == .regular && verticalSizeClass == .regular {
-                
-                Text("iPad Portrait/Landscape")
-            }
+            ProfileHeaderView(isIphone)
             ZStack {
                 mainBgColor
-                
-                
-                
                 Text("PREVIEW")
                     .font(.system(size: 100, weight: .heavy))
                     .foregroundColor(.gray)
                     .opacity(0.3)
                     .offset(y: -150)
-                
-                
-                
-                if vm.isPhone {
-                    
-                    VStack {
-                        Text("iPhone Portrait/Landscape")
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.5)
+                    .padding()
+                if isIphone {
+                    VStack(spacing: 40) {
                         VStack(alignment: .leading, spacing: 40) {
                             WorkExperienceView()
                                 .id(1)
@@ -72,18 +61,18 @@ struct CVView: View {
                                 .id(2)
                             
                         }
+                        .padding()
                         VStack(alignment: .leading, spacing: 20) {
                             HobbiesView()
                                 .id(3)
-                            AttitudesView()
+                            AttitudesView(isIphone)
                                 .id(4)
                         }
+                        
                     }
+                    .padding()
                 }
                 else {
-                    
-                    Text("iPad Portrait/Landscape")
-                    
                     HStack(spacing: 150) {
                         VStack(alignment: .leading, spacing: 40) {
                             WorkExperienceView()
@@ -104,10 +93,9 @@ struct CVView: View {
                     }
                     .padding(50)
                 }
-                
             }
+            
             .foregroundColor(.white)
-            .hidden()
         }
         .colorScheme(.light)
         .ignoresSafeArea()

@@ -71,7 +71,7 @@ struct AttitudeView: View {
     var body: some View {
         VStack {
             Circle()
-                .strokeBorder(Color.white,lineWidth: 8 )
+                .strokeBorder(Color.white,lineWidth: 6)
                 .frame(width: 130, height: 130)
                 
                 .overlay(
@@ -87,11 +87,12 @@ struct AttitudeView: View {
                     }
                     .frame(width: 100)
                     .foregroundColor(fgColor)
-                    //                                        .padding()
                 )
             
             Text(title)
                 .font(.system(size: 20, weight: .regular, design: .serif))
+                .lineLimit(1)
+                .minimumScaleFactor(0.3)
         }
     }
 }
@@ -137,7 +138,7 @@ struct WorkExperienceView: View {
                 Text("I started at Rwanda Build Program in December 2020 as an iOS Developer Intern, in the year following I started working on major company's projects.")
                 
                 
-                VStack {
+                VStack(alignment: .leading) {
                     ListItem(textContent: "Design and build applications for the iOS platform.")
                     
                     ListItem(textContent: "Identify and correct bottlenecks and fix bugs.")
@@ -191,19 +192,25 @@ struct HobbiesView: View {
 }
 
 struct AttitudesView: View {
+    
+    let isIphone: Bool
+    init(_  isIphone: Bool = true) {
+        self.isIphone =  isIphone
+    }
     var body: some View {
         Group {
             Text("I am...")
                 .titleFormat()
             
-            
-            
-            HStack {
+            HStack(alignment: .top) {
                 AttitudeView(title: "Motivated")
+                    .scaleEffect(isIphone ? 0.7: 1.0)
                 Spacer()
                 AttitudeView(title: "Detail oriented")
+                    .scaleEffect(isIphone ? 0.9: 1.0)
                 Spacer()
                 AttitudeView(title: "Loyal")
+                    .scaleEffect(isIphone ? 0.7: 1.0)
             }
             
             .frame(maxWidth: .infinity)
@@ -212,21 +219,41 @@ struct AttitudesView: View {
 }
 
 struct ProfileHeaderView: View {
+    let isIphone: Bool
+    
+    init(_ isIphone: Bool = true) {
+        self.isIphone = isIphone
+    }
     var body: some View {
         HStack {
-            VStack(alignment: .leading, spacing: 30) {
+            VStack(alignment: .leading, spacing: isIphone ? 10 : 30) {
                 Text("Cédric Bahirwe")
-                    .font(.system(size: 45, weight: .bold))
+                    .font(.system(size: isIphone ? 24 : 45, weight: .bold))
                 
-                HStack {
-                    HStack {
-                        Image(systemName: "phone")
-                        Text("+250782628511")
+                
+                if isIphone {
+                    VStack(spacing: 5) {
+                        HStack {
+                            Image(systemName: "phone")
+                            Text("+250782628511")
+                        }
+                        
+                        HStack {
+                            Image(systemName: "envelope")
+                            Text("+250782628511")
+                        }
                     }
-                    
+                } else {
                     HStack {
-                        Image(systemName: "envelope")
-                        Text("+250782628511")
+                        HStack {
+                            Image(systemName: "phone")
+                            Text("+250782628511")
+                        }
+                        
+                        HStack {
+                            Image(systemName: "envelope")
+                            Text("+250782628511")
+                        }
                     }
                 }
             }
@@ -235,11 +262,11 @@ struct ProfileHeaderView: View {
             
             Image("cedric.me")
                 .resizable()
-                .frame(width: 150, height: 150)
+                .frame(width: isIphone ? 100 : 150, height: isIphone ? 100 : 150)
                 .clipShape(Circle())
         }
-        .padding(50)
-        .background(Color.white)
+        .padding(isIphone ? 30 : 50)
+        .background(Color.white.edgesIgnoringSafeArea(.all))
     }
 }
 
@@ -276,6 +303,7 @@ struct SkillView: View {
             }
             .frame(width: 250, alignment: .leading)
         }
+        .padding(.horizontal, 3)
     }
 }
 

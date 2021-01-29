@@ -18,8 +18,8 @@ struct ContentView: View {
         .statusBar(hidden: true)
         .background(
             VStack {
-                Color.white.ignoresSafeArea(.all, edges: .top)
-                mainBgColor.ignoresSafeArea(.all, edges: .bottom)
+                Color.white.ignoresSafeArea(.all, edges: .all)
+                mainBgColor.ignoresSafeArea(.all, edges: .all)
             }
             )
     }
@@ -29,6 +29,6 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
-            .previewLayout(.fixed(width: 1200, height: 1000))
+//            .previewLayout(.fixed(width: 1200, height: 1000))
     }
 }
