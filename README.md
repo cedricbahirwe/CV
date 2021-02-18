@@ -1,12 +1,13 @@
 # CV
 A futurist CV form generator using swiftui
 
-
-!(https://github.com/cedricbahirwe/CV/blob/master/iPhone_iPad.jpg?raw=true)
-
-
+## iPad and iPhone Layout
 <img alt="Main ScreenShot for iPad & iPhone" src="https://github.com/cedricbahirwe/CV/blob/master/iPhone+iPad.png">
 
+## LandScape iPad
+
+<img alt="iPad Layout" width="45%" height="890" src="https://github.com/cedricbahirwe/CV/blob/master/iPad.png">
 
 
-<img alt="iPad Layout" width="45%" height="890" src="https://github.com/cedricbahirwe/CV/blob/master/iPad.png">&nbsp;&nbsp;&nbsp;&nbsp;<img alt="iPhone Layout" width="45%" height="890" src="https://github.com/cedricbahirwe/CV/blob/master/iPhone.png">
+## Portrait iPhone
+;<img alt="iPhone Layout" width="45%" height="890" src="https://github.com/cedricbahirwe/CV/blob/master/iPhone.png">
