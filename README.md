@@ -6,8 +6,8 @@ A futurist CV form generator using swiftui
 
 ## LandScape iPad
 
-<img alt="iPad Layout" width="45%" height="890" src="https://github.com/cedricbahirwe/CV/blob/master/iPad.png">
+<img alt="iPad Layout"  src="https://github.com/cedricbahirwe/CV/blob/master/iPad.png">
 
 
 ## Portrait iPhone
-;<img alt="iPhone Layout" width="45%" height="890" src="https://github.com/cedricbahirwe/CV/blob/master/iPhone.png">
+;<img alt="iPhone Layout"  src="https://github.com/cedricbahirwe/CV/blob/master/iPhone.png">
